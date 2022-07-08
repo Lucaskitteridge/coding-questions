@@ -12,10 +12,15 @@ The steps in progressing:
 
 */
 
-const nums = [ 2.0, 2.0, 3.0, 4.0 ]
+const nums = [2.0, 2.0, 3.0, 4.0];
+const rule1 = [(a, b) => a + b, (a, b) => a - b];
+const rule2 = [(a, b) => a + b, (a, b) => a - b, (a, b) => a * b];
 
-const reduceRules = numbers => {
+const reduceRules = (numbers, rules) => {
+  return numbers.reduce((output, number, index) => {
+    return rules[(index - 1) % rules.length](output, number);
+  });
+};
 
-}
-
-console.log(reduceRules(nums))
+console.log(reduceRules(nums, rule1)); // 5
+console.log(reduceRules(nums, rule2)); // 4
