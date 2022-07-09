@@ -14,7 +14,7 @@ const string = "This website is for losers LOL!";
 const vowelRemover = (string) => {
   const vowels = "aeiou";
 
-  return str
+  return string
     .split("")
     .filter((letter) => !vowels.includes(letter.toLowerCase()))
     .join("");
