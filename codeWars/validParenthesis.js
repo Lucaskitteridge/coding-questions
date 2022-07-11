@@ -8,14 +8,34 @@ Examples
 "(())((()())())"  =>  true
 */
 
-const validParen = string => {
+const validParen = (string) => {
+  if (!string) {
+    return true;
+  }
+  if (string.length % 2 !== 0) {
+    return false;
+  }
+  const openingArray = [];
+  for (let paren of string.split("")) {
+    if (paren === "{" || paren === "(" || paren === "[") {
+      openingArray.push(paren);
+    } else if (paren === "}" && openingArray[openingArray.length - 1] === "{") {
+      openingArray.pop();
+    } else if (paren === ")" && openingArray[openingArray.length - 1] === "(") {
+      openingArray.pop();
+    } else if (paren === "]" && openingArray[openingArray.length - 1] === "[") {
+      openingArray.pop();
+    } else {
+      return false;
+    }
+  }
+  if (openingArray.length === 0) {
+    return true;
+  }
+  return false;
+};
 
-}
-
-
-console.log(validParen("(")) // false
-console.log(validParen(")(()))" )) // false
-console.log(validParen("()")) // true
-console.log(validParen("(())((()())())")) // true
-
-
+console.log(validParen("(")); // false
+console.log(validParen(")(()))")); // false
+console.log(validParen("()")); // true
+console.log(validParen("(())((()())())")); // true
