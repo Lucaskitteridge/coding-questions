@@ -14,4 +14,22 @@ s = [1,1,0,1,1,0,1,1]
          length = 4
 */
 
+const binaryArray = (array) => {
+  let zero = 0
+  let one = 0
+  for(let i = 0; i < array.length; i++) {
+    if(array[i] === 0) {
+      zero += 1
+    } else {
+      one += 1
+    }
+  }
+  if(zero === one) {
+    return array.length
+  }
+}
 
+console.log(binaryArray([0,1])) //2
+console.log(binaryArray([1,1,0,1,1,0,1,1])) // 4
+console.log(binaryArray([0,1,1,0,1,1,1,0,0,0])) // 10
+console.log(binaryArray([0,0,1,1,1,0,0,0,0,0])) // 6
