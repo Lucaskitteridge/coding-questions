@@ -26,8 +26,11 @@ const binaryArray = (array) => {
   }
   if(zero === one) {
     return array.length
+  } else if (zero > one) {
+
   }
 }
+
 
 console.log(binaryArray([0,1])) //2
 console.log(binaryArray([1,1,0,1,1,0,1,1])) // 4
